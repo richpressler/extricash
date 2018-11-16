@@ -9,7 +9,6 @@ const TransactionModel = require('../dist/modules/transaction/transaction.model'
  */
 exports.up = function up (done) {
   AccountModel.find()
-    .lean()
     .exec()
     .then(accounts => {
       const promises = [];

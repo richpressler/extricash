@@ -5,6 +5,8 @@ import { UserSchema } from './modules/user';
 import { TransactionSchema } from './modules/transaction';
 
 const LinkSchema = gql`
+  scalar DateTime
+  
   type Query {
     _: Boolean
   }

@@ -8,7 +8,7 @@ export const TransactionSchema = gql`
   type Transaction {
     id: ID!
     accountId: String!
-    date: String!
+    date: DateTime!
     amount: Float!
     description: String
     location: String
