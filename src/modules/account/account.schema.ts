@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
-export default gql`
+export const AccountSchema = gql`
   extend type Query {
-    account: Account!
+    account(id: ID!): Account!
   }
 
   type Account {
