@@ -14,7 +14,7 @@ exports.up = function up (done) {
       const promises = [];
 
       accounts.forEach(account => {
-        account.transactions.forEach(transaction => {
+        account.get('transactions').forEach(transaction => {
           delete transaction._id;
           transaction.accountId = account._id;
           const model = new TransactionModel(transaction);
