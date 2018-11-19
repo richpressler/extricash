@@ -1,31 +1,13 @@
 {
-  "name": "extricash-api",
+  "name": "extricash",
   "version": "1.0.0",
-  "main": "dist/index.js",
+  "main": "index.js",
+  "author": "Richard Pressler <rmpressler@gmail.com>",
   "license": "MIT",
-  "dependencies": {
-    "@types/dotenv": "^6.1.0",
-    "@types/graphql": "^14.0.3",
-    "@types/graphql-iso-date": "^3.3.1",
-    "@types/lodash": "^4.14.118",
-    "@types/mongoose": "^5.3.1",
-    "apollo-server": "^2.1.0",
-    "apollo-server-express": "^2.1.0",
-    "dotenv": "^6.1.0",
-    "express": "^4.16.4",
-    "graphql": "^14.0.2",
-    "graphql-iso-date": "^3.6.1",
-    "graphql-tag": "^2.10.0",
-    "lodash": "^4.17.11",
-    "migrate-mongoose": "^3.2.2",
-    "mongoose": "^5.3.12",
-    "ts-node": "^7.0.1",
-    "typescript": "^3.1.6"
-  },
   "scripts": {
-    "start": "yarn build && node dist/index",
-    "build": "./node_modules/.bin/tsc",
-    "migrate:create": "node ./scripts/create-migration",
-    "migrate:run": "yarn build && node ./scripts/run-migrations"
+    "start": "yarn build && cd backend && yarn start",
+    "build": "cd frontend && yarn build && cd ../backend && yarn build",
+    "migrate:create": "cd backend && node ./scripts/create-migration",
+    "migrate:run": "cd backend && yarn build && node ./scripts/run-migrations"
   }
 }
