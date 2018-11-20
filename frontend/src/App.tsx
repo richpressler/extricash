@@ -1,13 +1,15 @@
 import * as React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
-import { HomePage } from './home/HomePage';
-import { DashboardPage } from './dashboard/DashboardPage';
+import { HomePage } from './HomePage';
+import { DashboardPage } from './DashboardPage';
 
 export class App extends React.Component {
   render() {
     return (
-      <div>
+      <div className="main-body">
+        <CssBaseline/>
         <div className="header">
         </div>
         <div className="content">

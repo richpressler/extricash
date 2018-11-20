@@ -32,4 +32,9 @@ export class DAL {
     };
     return await this.model.find(query, null, mongoOptions).lean().exec().then(result => this.mapId(result));
   }
+
+  public static async create(data) {
+    data.createdDate = new Date().toISOString();
+    return await this.model.create(data).then(createdUser => this.mapId(createdUser));
+  }
 }

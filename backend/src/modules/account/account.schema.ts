@@ -10,3 +10,8 @@ export const AccountSchema = gql`
     name: String!
   }
 `;
+
+export interface Account {
+  id: string,
+  name: string
+}

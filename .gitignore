@@ -1,6 +1,10 @@
 backend/dist
-backend/.env
 backend/node_modules
+backend/yarn-error.log
+backend/.env
 
 frontend/dist
 frontend/node_modules
+frontend/yarn-error.log
+
+node_modules

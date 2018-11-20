@@ -84,6 +84,18 @@
     csstype "^2.0.0"
     indefinite-observable "^1.0.1"
 
+"@types/lodash@^4.14.118":
+  version "4.14.118"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/@types/lodash/-/lodash-4.14.118.tgz#247bab39bfcc6d910d4927c6e06cbc70ec376f27"
+  integrity sha1-JHurOb/MbZENSSfG4Gy8cOw3byc=
+
+"@types/moment@^2.13.0":
+  version "2.13.0"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/@types/moment/-/moment-2.13.0.tgz#604ebd189bc3bc34a1548689404e61a2a4aac896"
+  integrity sha1-YE69GJvDvDShVIaJQE5hoqSqyJY=
+  dependencies:
+    moment "*"
+
 "@types/node@*":
   version "10.12.2"
   resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/@types/node/-/node-10.12.2.tgz#d77f9faa027cadad9c912cd47f4f8b07b0fb0864"
@@ -1989,7 +2001,7 @@ lodash.debounce@^4.0.8:
   resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
   integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
 
-lodash@^4.17.3:
+lodash@^4.17.11, lodash@^4.17.3:
   version "4.17.11"
   resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
   integrity sha1-s56mIp72B+zYniyN8SU2iRysm40=
@@ -2170,6 +2182,11 @@ mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0:
   integrity sha1-MAV0OOrGz3+MR2fzhkjWaX11yQM=
   dependencies:
     minimist "0.0.8"
+
+moment@*, moment@^2.22.2:
+  version "2.22.2"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/moment/-/moment-2.22.2.tgz#3c257f9839fc0e93ff53149632239eb90783ff66"
+  integrity sha1-PCV/mDn8DpP/UxSWMiOeuQeD/2Y=
 
 move-concurrently@^1.0.1:
   version "1.0.1"

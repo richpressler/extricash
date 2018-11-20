@@ -6,8 +6,12 @@
   "license": "MIT",
   "scripts": {
     "start": "yarn build && cd backend && yarn start",
+    "start:dev": "cd backend && yarn build && cd ../frontend && concurrently \"yarn build:dev\" \"node ../backend/dist\"",
     "build": "cd frontend && yarn build && cd ../backend && yarn build",
     "migrate:create": "cd backend && node ./scripts/create-migration",
     "migrate:run": "cd backend && yarn build && node ./scripts/run-migrations"
+  },
+  "dependencies": {
+    "concurrently": "^4.1.0"
   }
 }

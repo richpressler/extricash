@@ -1,13 +1,26 @@
 import * as React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-// import CssBaseline from '@material-ui/core/CssBaseline';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import { App } from './App';
 
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#3366cc'
+    },
+    secondary: {
+      main: '#78909C'
+    },
+  }
+});
+
 render(
   <BrowserRouter>
-    <App/>
+    <MuiThemeProvider theme={theme}>
+      <App/>
+    </MuiThemeProvider>
   </BrowserRouter>,
   document.getElementById('root')
 );

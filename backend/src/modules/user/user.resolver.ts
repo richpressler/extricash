@@ -1,3 +1,4 @@
+import { UserService } from './';
 import { UserDAL } from './user.dal';
 import { AccountDAL } from '../account';
 
@@ -15,6 +16,14 @@ export const UserResolvers = {
     },
     user: async (parent, { id }, { me }) => {
       return await UserDAL.findById(id);
+    }
+  },
+  Mutation: {
+    register: async (parent, args) => {
+      return await UserService.register(args);
+    },
+    login: async (parent, args) => {
+      return await UserService.login(args);
     }
   },
   User: {
