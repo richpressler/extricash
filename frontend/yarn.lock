@@ -71,6 +71,11 @@
   dependencies:
     "@babel/runtime" "7.1.2"
 
+"@types/async@2.0.50":
+  version "2.0.50"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/@types/async/-/async-2.0.50.tgz#117540e026d64e1846093abbd5adc7e27fda7bcb"
+  integrity sha1-EXVA4CbWThhGCTq71a3H4n/ae8s=
+
 "@types/history@*":
   version "4.7.2"
   resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/@types/history/-/history-4.7.2.tgz#0e670ea254d559241b6eeb3894f8754991e73220"
@@ -145,6 +150,11 @@
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
+
+"@types/zen-observable@^0.8.0":
+  version "0.8.0"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/@types/zen-observable/-/zen-observable-0.8.0.tgz#8b63ab7f1aa5321248aad5ac890a485656dcea4d"
+  integrity sha1-i2OrfxqlMhJIqtWsiQpIVlbc6k0=
 
 "@webassemblyjs/ast@1.7.10":
   version "1.7.10"
@@ -355,6 +365,103 @@ anymatch@^2.0.0:
   dependencies:
     micromatch "^3.1.4"
     normalize-path "^2.1.1"
+
+apollo-boost@^0.1.21:
+  version "0.1.21"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/apollo-boost/-/apollo-boost-0.1.21.tgz#1c6b5f53120bd46faa825715da40cf5578fd6fbb"
+  integrity sha1-HGtfUxIL1G+qglcV2kDPVXj9b7s=
+  dependencies:
+    apollo-cache "^1.1.20"
+    apollo-cache-inmemory "^1.3.10"
+    apollo-client "^2.4.6"
+    apollo-link "^1.0.6"
+    apollo-link-error "^1.0.3"
+    apollo-link-http "^1.3.1"
+    apollo-link-state "^0.4.0"
+    graphql-tag "^2.4.2"
+
+apollo-cache-inmemory@^1.3.10:
+  version "1.3.10"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/apollo-cache-inmemory/-/apollo-cache-inmemory-1.3.10.tgz#2e5375ad7ac0d30d59aaae3a2b5967673d0cf968"
+  integrity sha1-LlN1rXrA0w1Zqq46K1lnZz0M+Wg=
+  dependencies:
+    apollo-cache "^1.1.20"
+    apollo-utilities "^1.0.25"
+    optimism "^0.6.6"
+
+apollo-cache@1.1.20, apollo-cache@^1.1.20:
+  version "1.1.20"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/apollo-cache/-/apollo-cache-1.1.20.tgz#6152cc4baf6a63e376efee79f75de4f5c84bf90e"
+  integrity sha1-YVLMS69qY+N27+55913k9chL+Q4=
+  dependencies:
+    apollo-utilities "^1.0.25"
+
+apollo-client@^2.4.6:
+  version "2.4.6"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/apollo-client/-/apollo-client-2.4.6.tgz#ba24a2def6ea9d487b41672652ca967cc7c05e4a"
+  integrity sha1-uiSi3vbqnUh7QWcmUsqWfMfAXko=
+  dependencies:
+    "@types/zen-observable" "^0.8.0"
+    apollo-cache "1.1.20"
+    apollo-link "^1.0.0"
+    apollo-link-dedup "^1.0.0"
+    apollo-utilities "1.0.25"
+    symbol-observable "^1.0.2"
+    zen-observable "^0.8.0"
+  optionalDependencies:
+    "@types/async" "2.0.50"
+
+apollo-link-dedup@^1.0.0:
+  version "1.0.10"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/apollo-link-dedup/-/apollo-link-dedup-1.0.10.tgz#7b94589fe7f969777efd18a129043c78430800ae"
+  integrity sha1-e5RYn+f5aXd+/RihKQQ8eEMIAK4=
+  dependencies:
+    apollo-link "^1.2.3"
+
+apollo-link-error@^1.0.3:
+  version "1.1.1"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/apollo-link-error/-/apollo-link-error-1.1.1.tgz#69d7124d4dc11ce60f505c940f05d4f1aa0945fb"
+  integrity sha1-adcSTU3BHOYPUFyUDwXU8aoJRfs=
+  dependencies:
+    apollo-link "^1.2.3"
+
+apollo-link-http-common@^0.2.5:
+  version "0.2.5"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/apollo-link-http-common/-/apollo-link-http-common-0.2.5.tgz#d094beb7971523203359bf830bfbfa7b4e7c30ed"
+  integrity sha1-0JS+t5cVIyAzWb+DC/v6e058MO0=
+  dependencies:
+    apollo-link "^1.2.3"
+
+apollo-link-http@^1.3.1:
+  version "1.5.5"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/apollo-link-http/-/apollo-link-http-1.5.5.tgz#7dbe851821771ad67fa29e3900c57f38cbd80da8"
+  integrity sha1-fb6FGCF3GtZ/op45AMV/OMvYDag=
+  dependencies:
+    apollo-link "^1.2.3"
+    apollo-link-http-common "^0.2.5"
+
+apollo-link-state@^0.4.0:
+  version "0.4.2"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/apollo-link-state/-/apollo-link-state-0.4.2.tgz#ac00e9be9b0ca89eae0be6ba31fe904b80bbe2e8"
+  integrity sha1-rADpvpsMqJ6uC+a6Mf6QS4C74ug=
+  dependencies:
+    apollo-utilities "^1.0.8"
+    graphql-anywhere "^4.1.0-alpha.0"
+
+apollo-link@^1.0.0, apollo-link@^1.0.6, apollo-link@^1.2.3:
+  version "1.2.3"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/apollo-link/-/apollo-link-1.2.3.tgz#9bd8d5fe1d88d31dc91dae9ecc22474d451fb70d"
+  integrity sha1-m9jV/h2I0x3JHa6ezCJHTUUftw0=
+  dependencies:
+    apollo-utilities "^1.0.0"
+    zen-observable-ts "^0.8.10"
+
+apollo-utilities@1.0.25, apollo-utilities@^1.0.0, apollo-utilities@^1.0.25, apollo-utilities@^1.0.8:
+  version "1.0.25"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/apollo-utilities/-/apollo-utilities-1.0.25.tgz#899b00f5f990fb451675adf84cb3de82eb6372ea"
+  integrity sha1-iZsA9fmQ+0UWda34TLPegutjcuo=
+  dependencies:
+    fast-json-stable-stringify "^2.0.0"
 
 aproba@^1.0.3, aproba@^1.1.1:
   version "1.2.0"
@@ -821,6 +928,11 @@ core-js@^1.0.0:
   resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
   integrity sha1-ZSKUwUZR2yj6k70tX/KYOk8IxjY=
 
+core-js@^2.4.1:
+  version "2.5.7"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/core-js/-/core-js-2.5.7.tgz#f972608ff0cead68b841a16a932d0b183791814e"
+  integrity sha1-+XJgj/DOrWi4QaFqky0LGDeRgU4=
+
 core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
@@ -1257,12 +1369,31 @@ fast-json-stable-stringify@^2.0.0:
   resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/fast-json-stable-stringify/-/fast-json-stable-stringify-2.0.0.tgz#d5142c0caee6b1189f87d3a76111064f86c8bbf2"
   integrity sha1-1RQsDK7msRifh9OnYREGT4bIu/I=
 
+fbjs-css-vars@^1.0.0:
+  version "1.0.1"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/fbjs-css-vars/-/fbjs-css-vars-1.0.1.tgz#836d876e887d702f45610f5ebd2fbeef649527fc"
+  integrity sha1-g22Hboh9cC9FYQ9evS++72SVJ/w=
+
 fbjs@^0.8.1:
   version "0.8.17"
   resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/fbjs/-/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
   integrity sha1-xNWY6taUkRJlPWWIsBpc3Nn5D90=
   dependencies:
     core-js "^1.0.0"
+    isomorphic-fetch "^2.1.1"
+    loose-envify "^1.0.0"
+    object-assign "^4.1.0"
+    promise "^7.1.1"
+    setimmediate "^1.0.5"
+    ua-parser-js "^0.7.18"
+
+fbjs@^1.0.0:
+  version "1.0.0"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/fbjs/-/fbjs-1.0.0.tgz#52c215e0883a3c86af2a7a776ed51525ae8e0a5a"
+  integrity sha1-UsIV4Ig6PIavKnp3btUVJa6OClo=
+  dependencies:
+    core-js "^2.4.1"
+    fbjs-css-vars "^1.0.0"
     isomorphic-fetch "^2.1.1"
     loose-envify "^1.0.0"
     object-assign "^4.1.0"
@@ -1424,6 +1555,25 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.2:
   version "4.1.11"
   resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
   integrity sha1-Dovf5NHduIVNZOBOp8AOKgJuVlg=
+
+graphql-anywhere@^4.1.0-alpha.0:
+  version "4.1.22"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/graphql-anywhere/-/graphql-anywhere-4.1.22.tgz#1c831ba3c9e5664a0dd24d10d23a9e9512d92056"
+  integrity sha1-HIMbo8nlZkoN0k0Q0jqelRLZIFY=
+  dependencies:
+    apollo-utilities "^1.0.25"
+
+graphql-tag@^2.10.0, graphql-tag@^2.4.2:
+  version "2.10.0"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/graphql-tag/-/graphql-tag-2.10.0.tgz#87da024be863e357551b2b8700e496ee2d4353ae"
+  integrity sha1-h9oCS+hj41dVGyuHAOSW7i1DU64=
+
+graphql@^14.0.2:
+  version "14.0.2"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/graphql/-/graphql-14.0.2.tgz#7dded337a4c3fd2d075692323384034b357f5650"
+  integrity sha1-fd7TN6TD/S0HVpIyM4QDSzV/VlA=
+  dependencies:
+    iterall "^1.2.2"
 
 has-flag@^3.0.0:
   version "3.0.0"
@@ -1601,6 +1751,11 @@ ignore-walk@^3.0.1:
   dependencies:
     minimatch "^3.0.4"
 
+immutable-tuple@^0.4.9:
+  version "0.4.9"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/immutable-tuple/-/immutable-tuple-0.4.9.tgz#473ebdd6c169c461913a454bf87ef8f601a20ff0"
+  integrity sha1-Rz691sFpxGGROkVL+H749gGiD/A=
+
 import-local@^2.0.0:
   version "2.0.0"
   resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/import-local/-/import-local-2.0.0.tgz#55070be38a5993cf18ef6db7e961f5bee5c5a09d"
@@ -1654,7 +1809,7 @@ interpret@^1.1.0:
   resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/interpret/-/interpret-1.1.0.tgz#7ed1b1410c6a0e0f78cf95d3b8440c63f78b8614"
   integrity sha1-ftGxQQxqDg94z5XTuEQMY/eLhhQ=
 
-invariant@^2.2.1, invariant@^2.2.4:
+invariant@^2.2.1, invariant@^2.2.2, invariant@^2.2.4:
   version "2.2.4"
   resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   integrity sha1-YQ88ksk1nOHbYW5TgAjSP/NRWOY=
@@ -1855,6 +2010,11 @@ isomorphic-fetch@^2.1.1:
     node-fetch "^1.0.1"
     whatwg-fetch ">=0.10.0"
 
+iterall@^1.2.2:
+  version "1.2.2"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/iterall/-/iterall-1.2.2.tgz#92d70deb8028e0c39ff3164fdbf4d8b088130cd7"
+  integrity sha1-ktcN64Ao4MOf8xZP2/TYsIgTDNc=
+
 "js-tokens@^3.0.0 || ^4.0.0":
   version "4.0.0"
   resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
@@ -2000,6 +2160,16 @@ lodash.debounce@^4.0.8:
   version "4.0.8"
   resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
   integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
+
+lodash.flowright@^3.5.0:
+  version "3.5.0"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/lodash.flowright/-/lodash.flowright-3.5.0.tgz#2b5fff399716d7e7dc5724fe9349f67065184d67"
+  integrity sha1-K1//OZcW1+fcVyT+k0n2cGUYTWc=
+
+lodash.isequal@^4.5.0:
+  version "4.5.0"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
+  integrity sha1-QVxEePK8wwEgwizhDtMib30+GOA=
 
 lodash@^4.17.11, lodash@^4.17.3:
   version "4.17.11"
@@ -2416,6 +2586,13 @@ once@^1.3.0, once@^1.3.1, once@^1.4.0:
   dependencies:
     wrappy "1"
 
+optimism@^0.6.6:
+  version "0.6.8"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/optimism/-/optimism-0.6.8.tgz#0780b546da8cd0a72e5207e0c3706c990c8673a6"
+  integrity sha1-B4C1RtqM0KcuUgfgw3BsmQyGc6Y=
+  dependencies:
+    immutable-tuple "^0.4.9"
+
 os-browserify@^0.3.0:
   version "0.3.0"
   resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/os-browserify/-/os-browserify-0.3.0.tgz#854373c7f5c2315914fc9bfc6bd8238fdda1ec27"
@@ -2736,6 +2913,18 @@ rc@^1.2.7:
     ini "~1.3.0"
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
+
+react-apollo@^2.3.1:
+  version "2.3.1"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/react-apollo/-/react-apollo-2.3.1.tgz#f3687062f438b9b40e525d7e1ac2bcf0101b4495"
+  integrity sha1-82hwYvQ4ubQOUl1+GsK88BAbRJU=
+  dependencies:
+    fbjs "^1.0.0"
+    hoist-non-react-statics "^3.0.0"
+    invariant "^2.2.2"
+    lodash.flowright "^3.5.0"
+    lodash.isequal "^4.5.0"
+    prop-types "^15.6.0"
 
 react-dom@^16.6.0:
   version "16.6.0"
@@ -3253,7 +3442,7 @@ symbol-observable@1.0.4:
   resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/symbol-observable/-/symbol-observable-1.0.4.tgz#29bf615d4aa7121bdd898b22d4b3f9bc4e2aa03d"
   integrity sha1-Kb9hXUqnEhvdiYsi1LP5vE4qoD0=
 
-symbol-observable@^1.0.4, symbol-observable@^1.1.0:
+symbol-observable@^1.0.2, symbol-observable@^1.0.4, symbol-observable@^1.1.0:
   version "1.2.0"
   resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
   integrity sha1-wiaIrtTqs83C3+rLtWFmBWCgCAQ=
@@ -3678,3 +3867,15 @@ yargs@^12.0.2:
     which-module "^2.0.0"
     y18n "^3.2.1 || ^4.0.0"
     yargs-parser "^10.1.0"
+
+zen-observable-ts@^0.8.10:
+  version "0.8.10"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/zen-observable-ts/-/zen-observable-ts-0.8.10.tgz#18e2ce1c89fe026e9621fd83cc05168228fce829"
+  integrity sha1-GOLOHIn+Am6WIf2DzAUWgij86Ck=
+  dependencies:
+    zen-observable "^0.8.0"
+
+zen-observable@^0.8.0:
+  version "0.8.11"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/zen-observable/-/zen-observable-0.8.11.tgz#d3415885eeeb42ee5abb9821c95bb518fcd6d199"
+  integrity sha1-00FYhe7rQu5au5ghyVu1GPzW0Zk=
