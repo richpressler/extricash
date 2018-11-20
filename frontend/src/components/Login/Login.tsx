@@ -1,38 +1,28 @@
 import * as React from 'react';
-import { Button, Card, CardHeader, CardContent, Grid, TextField, withStyles } from '@material-ui/core';
-import { TextAlignProperty } from 'csstype';
+import { Button, Card, CardContent, Grid, TextField } from '@material-ui/core';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import VpnKey from '@material-ui/icons/VpnKey';
 import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
+import { withRouter } from 'react-router-dom';
 
-const LoginMutation = gql`
-  mutation LoginMutation($username: String!, $password: String!) {
-    login(username: $username, password: $password) {
-      token
-    }
-  }
-`
+import { LoginMutation } from '../../graphql';
 
-const cardHeaderStyles = {
-  root: {
-    backgroundColor: '#78909C'
-  },
-  title: {
-    color: 'white',
-    textAlign: 'center' as TextAlignProperty
-  }
-};
+import { LoginCardHeader } from './LoginHeader';
+import { LoginErrorGridItem } from './LoginErrorGridItem';
 
-const LoginCardHeader = withStyles(cardHeaderStyles)(CardHeader);
+interface LoginProps {
+  history: any;
+}
 
 const initialState = {
   username: '',
-  password: ''
+  password: '',
+  error: ''
 };
 type State = Readonly<typeof initialState>
 
-export class Login extends React.Component {
+class _Login extends React.Component<LoginProps, {}> {
   readonly state: State = initialState
 
   constructor(props) {
@@ -40,7 +30,8 @@ export class Login extends React.Component {
 
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      error: ''
     };
   }
 
@@ -53,10 +44,12 @@ export class Login extends React.Component {
     submitFn()
       .then(loginData => {
         window.localStorage.setItem('token', loginData.data.login.token);
+        this.props.history.push('/dashboard');
       })
       .catch(err => {
+        console.log(err);
         const error = err.graphQLErrors[0].message;
-        console.log(error);
+        this.setState({ error });
       });
   }
 
@@ -106,6 +99,9 @@ export class Login extends React.Component {
                       </Grid>
                     </Grid>
                   </Grid>
+                  <LoginErrorGridItem item>
+                    {this.state.error}
+                  </LoginErrorGridItem>
                   <Grid item>
                     <Button type="submit" fullWidth variant="contained" color="primary">Log In</Button>
                   </Grid>
@@ -118,3 +114,5 @@ export class Login extends React.Component {
     );
   }
 }
+
+export const Login = withRouter(_Login);
