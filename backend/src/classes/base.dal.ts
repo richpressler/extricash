@@ -10,6 +10,10 @@ export class DAL {
 
   protected static mapId(result: Document | Document[]) {
     result = JSON.parse(JSON.stringify(result));
+    if (!result) {
+      return result;
+    }
+
     if (result instanceof Array) {
       return (result as Document[]).map(doc => {
         doc.id = doc._id;
@@ -31,6 +35,12 @@ export class DAL {
       sort: options.orderBy
     };
     return await this.model.find(query, null, mongoOptions).lean().exec().then(result => this.mapId(result));
+  }
+
+  public static async findOne(query: any) {
+    return await this.model.findOne(query).lean().exec().then(result => {
+      return this.mapId(result)
+    });
   }
 
   public static async create(data) {

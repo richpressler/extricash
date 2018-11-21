@@ -3,7 +3,7 @@ import { Card, CardActionArea, CardContent, Tab, Tabs, withStyles } from '@mater
 import { Mutation } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 
-import { LoginMutation } from '../../graphql';
+import { LoginMutation, RegisterMutation } from '../../graphql';
 
 import { LoginCardHeader } from './LoginHeader';
 import { LoginForm } from './LoginForm';
@@ -50,29 +50,50 @@ class _Login extends React.Component<LoginProps, {}> {
       });
   }
 
-  handleRegister(userDetails, mutation) {
-    console.log(userDetails);
+  handleRegister({username, password, passwordConfirm, email}, mutation) {
+    if (password !== passwordConfirm) {
+      return this.setState({ error: 'Passwords must match.' });
+    }
+    
+    mutation({ variables: { username, password, email }})
+      .then(registerData => {
+        window.localStorage.setItem('token', registerData.data.register.token);
+        this.props.history.push('/dashboard');
+      })
+      .catch(err => {
+        console.log(err);
+        const error = err.graphQLErrors[0].message;
+        this.setState({ error });
+      });
   }
 
   render() {
     return (
-      <Mutation mutation={LoginMutation}>
-        {loginMutation => (
-          <Card>
-            <LoginCardHeader title="Extricash"/>
-            <CardActionArea>
-              <Tabs fullWidth value={this.state.activeTab} onChange={(event, value) => this.handleTabChange(value)}>
-                <LoginTab label="Login"/>
-                <LoginTab label="Register"/>
-              </Tabs>
-            </CardActionArea>
-            <CardContent>
-              {this.state.activeTab === 0 && <LoginForm onSubmit={userDetails => this.handleLogin(userDetails, loginMutation)} error={this.state.error}></LoginForm>}
-              {this.state.activeTab === 1 && <RegistrationForm onSubmit={userDetails => this.handleRegister(userDetails, loginMutation)} error={this.state.error}></RegistrationForm>}
-            </CardContent>
-          </Card>
-        )}
-      </Mutation>
+      <Card>
+        <LoginCardHeader title="Extricash"/>
+        <CardActionArea>
+          <Tabs fullWidth value={this.state.activeTab} onChange={(event, value) => this.handleTabChange(value)}>
+            <LoginTab label="Login"/>
+            <LoginTab label="Register"/>
+          </Tabs>
+        </CardActionArea>
+        <CardContent>
+          {this.state.activeTab === 0 && (
+            <Mutation mutation={LoginMutation}>
+              {loginMutation => (
+                <LoginForm onSubmit={userDetails => this.handleLogin(userDetails, loginMutation)} error={this.state.error}></LoginForm>
+              )}
+            </Mutation>
+          )}
+          {this.state.activeTab === 1 && (
+            <Mutation mutation={RegisterMutation}>
+              {registerMutation => (
+                <RegistrationForm onSubmit={userDetails => this.handleRegister(userDetails, registerMutation)} error={this.state.error}></RegistrationForm>
+              )}
+            </Mutation>
+          )}
+        </CardContent>
+      </Card>
     );
   }
 }

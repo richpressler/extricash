@@ -32,7 +32,8 @@ const exSchema = makeExecutableSchema({
 });
 
 const server = new ApolloServer({
-  schema: exSchema
+  schema: exSchema,
+  formatError: err => {console.log(err); return err}
 });
 
 server.applyMiddleware({ app, path: '/graphql' });
