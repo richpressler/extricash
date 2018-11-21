@@ -1,24 +1,28 @@
 import * as React from 'react';
-import { Button, Card, CardContent, Grid, TextField } from '@material-ui/core';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import VpnKey from '@material-ui/icons/VpnKey';
-import gql from 'graphql-tag';
+import { Card, CardActionArea, CardContent, Tab, Tabs, withStyles } from '@material-ui/core';
 import { Mutation } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 
 import { LoginMutation } from '../../graphql';
 
 import { LoginCardHeader } from './LoginHeader';
-import { LoginErrorGridItem } from './LoginErrorGridItem';
+import { LoginForm } from './LoginForm';
+import { RegistrationForm } from './RegistrationForm';
+
+const tabStyles = {
+  root: {
+    minWidth: 0
+  }
+};
+const LoginTab = withStyles(tabStyles)(Tab);
 
 interface LoginProps {
   history: any;
 }
 
 const initialState = {
-  username: '',
-  password: '',
-  error: ''
+  error: '',
+  activeTab: 0
 };
 type State = Readonly<typeof initialState>
 
@@ -27,21 +31,14 @@ class _Login extends React.Component<LoginProps, {}> {
 
   constructor(props) {
     super(props);
-
-    this.state = {
-      username: '',
-      password: '',
-      error: ''
-    };
   }
 
-  handleInput(field, newValue) {
-    this.setState({[field]: newValue});
+  handleTabChange(value) {
+    this.setState({ activeTab: value });
   }
 
-  handleSubmit(event, submitFn) {
-    event.preventDefault();
-    submitFn()
+  handleLogin(userDetails, mutation) {
+    mutation({ variables: { ...userDetails } })
       .then(loginData => {
         window.localStorage.setItem('token', loginData.data.login.token);
         this.props.history.push('/dashboard');
@@ -53,60 +50,25 @@ class _Login extends React.Component<LoginProps, {}> {
       });
   }
 
+  handleRegister(userDetails, mutation) {
+    console.log(userDetails);
+  }
+
   render() {
     return (
-      <Mutation mutation={LoginMutation} variables={this.state}>
+      <Mutation mutation={LoginMutation}>
         {loginMutation => (
           <Card>
             <LoginCardHeader title="Extricash"/>
+            <CardActionArea>
+              <Tabs fullWidth value={this.state.activeTab} onChange={(event, value) => this.handleTabChange(value)}>
+                <LoginTab label="Login"/>
+                <LoginTab label="Register"/>
+              </Tabs>
+            </CardActionArea>
             <CardContent>
-              <form onSubmit={event => this.handleSubmit(event, loginMutation)}>
-                <Grid
-                  container
-                  direction="column"
-                  justify="center"
-                  alignItems="stretch"
-                  spacing={16}
-                >
-                  <Grid item>
-                    <Grid container spacing={8} alignItems="flex-end">
-                      <Grid item>
-                        <AccountCircle />
-                      </Grid>
-                      <Grid item xs>
-                        <TextField
-                          type="text"
-                          value={this.state.username}
-                          onChange={event => this.handleInput('username', event.target.value)}
-                          label="Username"
-                          fullWidth
-                          autoFocus={true}/>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                  <Grid item>
-                    <Grid container spacing={8} alignItems="flex-end">
-                      <Grid item>
-                        <VpnKey />
-                      </Grid>
-                      <Grid item xs>
-                        <TextField
-                          type="password"
-                          value={this.state.password}
-                          label="Password"
-                          fullWidth
-                          onChange={event => this.handleInput('password', event.target.value)}/>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                  <LoginErrorGridItem item>
-                    {this.state.error}
-                  </LoginErrorGridItem>
-                  <Grid item>
-                    <Button type="submit" fullWidth variant="contained" color="primary">Log In</Button>
-                  </Grid>
-                </Grid>
-              </form>
+              {this.state.activeTab === 0 && <LoginForm onSubmit={userDetails => this.handleLogin(userDetails, loginMutation)} error={this.state.error}></LoginForm>}
+              {this.state.activeTab === 1 && <RegistrationForm onSubmit={userDetails => this.handleRegister(userDetails, loginMutation)} error={this.state.error}></RegistrationForm>}
             </CardContent>
           </Card>
         )}
