@@ -72,7 +72,7 @@ class _Login extends React.Component<LoginProps, {}> {
       <Card>
         <LoginCardHeader title="Extricash"/>
         <CardActionArea>
-          <Tabs fullWidth value={this.state.activeTab} onChange={(event, value) => this.handleTabChange(value)}>
+          <Tabs fullWidth textColor="action" value={this.state.activeTab} onChange={(event, value) => this.handleTabChange(value)}>
             <LoginTab label="Login"/>
             <LoginTab label="Register"/>
           </Tabs>

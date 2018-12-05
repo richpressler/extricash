@@ -49,7 +49,7 @@ export class RegistrationForm extends React.Component<RegistrationFormProps, {}>
           <Grid item>
             <Grid container spacing={8} alignItems="flex-end">
               <Grid item>
-                <Email />
+                <Email color="action"/>
               </Grid>
               <Grid item xs>
                 <TextField
@@ -65,7 +65,7 @@ export class RegistrationForm extends React.Component<RegistrationFormProps, {}>
           <Grid item>
             <Grid container spacing={8} alignItems="flex-end">
               <Grid item>
-                <AccountCircle />
+                <AccountCircle color="action"/>
               </Grid>
               <Grid item xs>
                 <TextField
@@ -80,7 +80,7 @@ export class RegistrationForm extends React.Component<RegistrationFormProps, {}>
           <Grid item>
             <Grid container spacing={8} alignItems="flex-end">
               <Grid item>
-                <VpnKey />
+                <VpnKey color="action"/>
               </Grid>
               <Grid item xs>
                 <TextField
@@ -95,7 +95,7 @@ export class RegistrationForm extends React.Component<RegistrationFormProps, {}>
           <Grid item>
             <Grid container spacing={8} alignItems="flex-end">
               <Grid item>
-                <VpnKey />
+                <VpnKey color="action"/>
               </Grid>
               <Grid item xs>
                 <TextField
