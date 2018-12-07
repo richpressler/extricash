@@ -1,8 +1,12 @@
 import * as React from 'react';
-import { Button, IconButton, Toolbar, Typography, withStyles } from '@material-ui/core';
+import { Link, Redirect, Route, RouteProps, Switch } from 'react-router-dom';
+import { Button, Hidden, IconButton, Toolbar, Typography, withStyles } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import { AppBar } from './AppBar';
+import { ExtricashDrawer } from './ExtricashDrawer';
+import { OverviewPage } from './OverviewPage';
+import { BillsPage } from './BillsPage';
 
 const AppBarTitle = withStyles({
   root: {
@@ -17,20 +21,32 @@ const AppBarMenuButton = withStyles({
   }
 })(IconButton);
 
-export class DashboardPage extends React.Component {
-  render() {
-    return (
+const HomeLink = props => <Link to="/dashboard" {...props} />
+
+export const DashboardPage: React.SFC<RouteProps> = ({ location }) => {
+  const homeLinkProps = { to: '/dashboard' };
+  return location.pathname === '/dashboard' ?
+    <Redirect to="/dashboard/overview" /> : 
+    <div>
       <AppBar>
         <Toolbar>
           <AppBarMenuButton color="inherit" aria-label="Menu">
             <MenuIcon />
           </AppBarMenuButton>
-          <AppBarTitle variant="h6" color="inherit">
-            Extricash
-          </AppBarTitle>
+          <Button component={HomeLink} {...homeLinkProps}>
+            <AppBarTitle variant="h6" color="inherit">
+              Extricash
+            </AppBarTitle>
+          </Button>
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
-    );
-  }
+      <Hidden xsDown>
+        <ExtricashDrawer permanent />
+      </Hidden>
+      <Switch>
+        <Route path="/dashboard/overview" component={OverviewPage}></Route>
+        <Route path="/dashboard/bills" component={BillsPage}></Route>
+      </Switch>
+    </div>;
 }

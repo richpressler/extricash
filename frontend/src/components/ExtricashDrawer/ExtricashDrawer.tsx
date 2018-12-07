@@ -1,58 +1,62 @@
 import * as React from 'react';
-import { Drawer, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import { Drawer, List, ListItem, ListItemIcon, ListItemText, withStyles } from '@material-ui/core';
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import AssessmentIcon from '@material-ui/icons/Assessment';
+import { DrawerProps } from '@material-ui/core/Drawer';
 
 const navLinks = [
   {
-    path: '/overview',
+    path: '/dashboard/overview',
     label: 'Overview',
     icon: <AccountBalanceIcon/>
   },
   {
-    path: '/bills',
+    path: '/dashboard/bills',
     label: 'Bills',
     icon: <AssignmentIcon/>
   },
   {
-    path: '/analytics',
+    path: '/dashboard/analytics',
     label: 'Analytics',
     icon: <AssessmentIcon/>
   }
 ];
 
-const sideList = (
-  <div>
-    <List>
-      {navLinks.map((link, index) => (
-        <ListItem button key={link.path}>
-          <ListItemIcon>{link.icon}</ListItemIcon>
-          <ListItemText primary={link.label} />
-        </ListItem>
-      ))}
-    </List>
-  </div>
-);
-
-interface Props {
-  toggle: (state: boolean) => void,
-  isOpen: boolean
+interface Props extends DrawerProps {
+  isOpen?: boolean;
+  permanent?: boolean;
+  toggle?: (state: boolean) => void;
 }
 
-export class ExtricashDrawer extends React.Component<Props, null> {
-  render() {
-    return (
-      <Drawer open={this.props.isOpen} onClose={() => this.props.toggle(false)}>
-          <div
-            tabIndex={0}
-            role="button"
-            onClick={() => this.props.toggle(false)}
-            onKeyDown={() => this.props.toggle(false)}
-          >
-            {sideList}
-          </div>
-        </Drawer>
-    );
+const StyledDrawer = withStyles(theme => ({
+  paper: {
+    width: (theme as any).layout.drawerWidth
   }
+}), { withTheme: true })(Drawer);
+
+export const ExtricashDrawer: React.SFC<Props> = props => {
+  return (
+    <StyledDrawer open={props.isOpen} onClose={() => props.permanent ? null : props.toggle(false)} variant={props.permanent ? "permanent" : "temporary"}>
+        <div
+          tabIndex={0}
+          role="button"
+          onClick={() => props.permanent ? null : props.toggle(false)}
+          onKeyDown={() => props.permanent ? null : props.toggle(false)}
+        >
+          <List>
+            {navLinks.map((link, index) => {
+              const linkProps = { to: link.path };
+              return (
+                <ListItem button={true} key={link.path} component={Link} {...linkProps}>
+                  <ListItemIcon>{link.icon}</ListItemIcon>
+                  <ListItemText primary={link.label} />
+                </ListItem>
+              )
+            })}
+          </List>
+        </div>
+      </StyledDrawer>
+  );
 }

@@ -8,6 +8,8 @@ export const AccountSchema = gql`
   type Account {
     id: ID!
     name: String!
+
+    transactions: [Transaction]
   }
 `;
 

@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 import { ApolloProvider } from 'react-apollo'
 import { ApolloClient } from 'apollo-client'
 import { createHttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
+
+import { extricashTheme } from './theme';
 
 import { App } from './components/App';
 
@@ -18,21 +20,9 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 })
 
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#3366cc'
-    },
-    secondary: {
-      main: '#78909C'
-    },
-    type: 'dark'
-  }
-});
-
 render(
   <BrowserRouter>
-    <MuiThemeProvider theme={theme}>
+    <MuiThemeProvider theme={extricashTheme}>
       <ApolloProvider client={client}>
         <App/>
       </ApolloProvider>

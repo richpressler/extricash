@@ -24,6 +24,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       hash: true,
+      inject: false,
       title: 'Extricash',
       template: './src/index.html',
       filename: './index.html' //relative to root of the application
