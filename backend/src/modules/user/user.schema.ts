@@ -1,12 +1,11 @@
 import gql from 'graphql-tag';
+import { Document } from 'mongoose';
 
 import { Account } from '../account';
 
 export const UserSchema = gql`
   extend type Query {
     me: User!
-    user(id: ID!): User!
-    users: [User!]!
   }
 
   extend type Mutation {
@@ -35,7 +34,7 @@ export const UserSchema = gql`
   }
 `;
 
-export interface User {
+export interface User extends Document {
   id: string;
   username: string
   email: string

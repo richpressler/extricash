@@ -1,4 +1,5 @@
 import gql from 'graphql-tag';
+import { Transaction } from '../transaction';
 
 export const AccountSchema = gql`
   extend type Query {
@@ -15,5 +16,7 @@ export const AccountSchema = gql`
 
 export interface Account {
   id: string,
-  name: string
+  name: string,
+
+  transactions: Transaction[]
 }

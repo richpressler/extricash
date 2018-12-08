@@ -36,6 +36,10 @@ export class AppBar extends React.Component {
   toggleDrawer(state) {
     this.setState({menuOpen: state});
   }
+
+  logout() {
+    window.localStorage.removeItem('token');
+  }
   
   render() {
     return (
@@ -50,7 +54,7 @@ export class AppBar extends React.Component {
             <AppBarTitle variant="h6" color="inherit">
               Extricash
             </AppBarTitle>
-            <Button color="inherit">Login</Button>
+            <Button color="inherit" onClick={this.logout}>Logout</Button>
           </Toolbar>
         </StyledAppBar>
         <Hidden smUp>

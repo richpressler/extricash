@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Redirect } from 'react-router-dom';
 import { Grid, withStyles } from '@material-ui/core'
 
 import { Login } from './Login';
@@ -11,7 +12,7 @@ const HomeContainerGrid = withStyles({
 
 export class HomePage extends React.Component {
   render() {
-    return (
+    return window.localStorage.getItem('token') ? <Redirect to="/dashboard" /> : (
       <HomeContainerGrid container
         direction="column"
         justify="center"

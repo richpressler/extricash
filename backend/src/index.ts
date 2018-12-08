@@ -1,11 +1,13 @@
 import { config } from 'dotenv';
 config();
 
-import * as express from 'express';
 import { json } from 'body-parser';
 import { renderFile } from 'ejs';
+import * as express from 'express';
+import { verify } from 'jsonwebtoken';
 import * as logger from 'morgan';
 import { resolve } from 'path';
+import { AuthenticationError } from 'apollo-server';
 import { ApolloServer } from 'apollo-server-express';
 import { makeExecutableSchema } from 'graphql-tools';
 
@@ -13,6 +15,7 @@ import { makeExecutableSchema } from 'graphql-tools';
 import './database';
 import resolvers from './resolvers';
 import schema from './schema';
+import { User, UserService } from './modules/user';
 
 const PORT = process.env.port || 8000;
 const distPath = resolve(__dirname, '../../frontend/dist');
@@ -31,9 +34,27 @@ const exSchema = makeExecutableSchema({
   resolvers
 });
 
+export interface Context {
+  me?: User
+};
+
 const server = new ApolloServer({
   schema: exSchema,
-  formatError: err => {console.log(err); return err}
+  formatError: err => {console.log(err); return err},
+  context: async ({ req }) => {
+    const authHeader = req.headers.authorization;
+    const token = authHeader ? authHeader.split(' ')[1] : null;
+    const context: Context = {};
+    if (token) {
+      try {
+        const userData = await verify(token, process.env.JWT_SECRET);
+        context.me = await UserService.getMe((userData as any).id);
+      } catch (e) {
+        throw new AuthenticationError(`JWT Error: ${e.message}`);
+      }
+    }
+    return context;
+  }
 });
 
 server.applyMiddleware({ app, path: '/graphql' });

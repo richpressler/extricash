@@ -1,21 +1,11 @@
 import { UserService } from './';
-import { UserDAL } from './user.dal';
 import { AccountDAL } from '../account';
+import { AuthenticationError } from 'apollo-server';
 
 export const UserResolvers = {
   Query: {
     me: (parent, args, { me }) => {
-      return {
-        id: 1,
-        username: 'rmpressler'
-      }
-    },
-    users: async (parent, args, { me }) => {
-      // return await UserDAL.find();
-      return [];
-    },
-    user: async (parent, { id }, { me }) => {
-      return await UserDAL.findById(id);
+      return me || new AuthenticationError('Not logged in.');
     }
   },
   Mutation: {

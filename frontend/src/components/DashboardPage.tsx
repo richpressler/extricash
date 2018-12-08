@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Link, Redirect, Route, RouteProps, Switch } from 'react-router-dom';
-import { Button, Hidden, IconButton, Toolbar, Typography, withStyles } from '@material-ui/core';
+import { Button, Hidden, IconButton, Paper, Toolbar, Typography, withStyles } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import { Query } from 'react-apollo';
 
 import { AppBar } from './AppBar';
 import { ExtricashDrawer } from './ExtricashDrawer';
@@ -21,10 +22,26 @@ const AppBarMenuButton = withStyles({
   }
 })(IconButton);
 
+const Content = withStyles(theme => 
+  ({
+    root: {
+      background: "none",
+      boxShadow: "none",
+      padding: "15px",
+      [theme.breakpoints.up('sm')]: {
+        marginLeft: (theme as any).layout.drawerWidth
+      }
+    }
+  })
+)(Paper);
+
 const HomeLink = props => <Link to="/dashboard" {...props} />
 
 export const DashboardPage: React.SFC<RouteProps> = ({ location }) => {
   const homeLinkProps = { to: '/dashboard' };
+  if (!window.localStorage.getItem('token')) {
+    return <Redirect to="/" />;
+  }
   return location.pathname === '/dashboard' ?
     <Redirect to="/dashboard/overview" /> : 
     <div>
@@ -44,9 +61,11 @@ export const DashboardPage: React.SFC<RouteProps> = ({ location }) => {
       <Hidden xsDown>
         <ExtricashDrawer permanent />
       </Hidden>
-      <Switch>
-        <Route path="/dashboard/overview" component={OverviewPage}></Route>
-        <Route path="/dashboard/bills" component={BillsPage}></Route>
-      </Switch>
+      <Content>
+        <Switch>
+          <Route path="/dashboard/overview" component={OverviewPage}></Route>
+          <Route path="/dashboard/bills" component={BillsPage}></Route>
+        </Switch>
+      </Content>
     </div>;
 }

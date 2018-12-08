@@ -14,3 +14,12 @@ export const TransactionSchema = gql`
     location: String
   }
 `;
+
+export interface Transaction {
+  id: string;
+  accountId: string;
+  date: Date;
+  amount: number;
+  description: string;
+  location: string;
+}
