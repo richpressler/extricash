@@ -23,27 +23,43 @@ export const UserSchema = gql`
     locationFilters:    [String]
   }
 
+  type Bill {
+    dayOfMonth: Int!,
+    name: String!,
+    amount: Float!
+  }
+
   type User {
     id: ID!
     username: String!
     email: String!
     createdDate: DateTime!
     csvSettings: CSVSettings
+    bills: [Bill],
+    monthlyIncome: Float
 
     accounts: [Account]!
   }
 `;
 
+export interface Bill {
+  dayOfMonth: number;
+  name: string;
+  amount: number;
+}
+
 export interface User extends Document {
   id: string;
-  username: string
-  email: string
-  createdDate: Date | string
+  username: string;
+  email: string;
+  createdDate: Date | string;
   csvSettings: {
-    columnAssignments:  number[]
-    hasHeaderRow:       boolean
-    locationFilters:    string[]
-  }
+    columnAssignments:  number[];
+    hasHeaderRow:       boolean;
+    locationFilters:    string[];
+  };
+  bills: [Bill];
+  monthlyIncome: number;
 
-  accounts: Account[]
+  accounts: Account[];
 }

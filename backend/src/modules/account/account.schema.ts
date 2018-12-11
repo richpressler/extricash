@@ -1,4 +1,5 @@
 import gql from 'graphql-tag';
+import { Document } from 'mongoose';
 import { Transaction } from '../transaction';
 
 export const AccountSchema = gql`
@@ -9,14 +10,16 @@ export const AccountSchema = gql`
   type Account {
     id: ID!
     name: String!
+    balance: Float!
 
-    transactions: [Transaction]
+    transactions(orderBy: String, limit: Int): [Transaction]
   }
 `;
 
-export interface Account {
-  id: string,
-  name: string,
+export interface Account extends Document {
+  id: string;
+  name: string;
+  balance: number;
 
   transactions: Transaction[]
 }

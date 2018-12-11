@@ -32,7 +32,8 @@ export class DAL {
 
   public static async find(query: any, options: any = {}) {
     const mongoOptions = {
-      sort: options.orderBy
+      sort: options.orderBy,
+      limit: options.limit
     };
     return await this.model.find(query, null, mongoOptions).lean().exec().then(result => this.mapId(result));
   }

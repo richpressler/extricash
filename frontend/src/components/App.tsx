@@ -8,16 +8,12 @@ import { DashboardPage } from './DashboardPage';
 export class App extends React.Component {
   render() {
     return (
-      <div className="main-body">
+      <div>
         <CssBaseline/>
-        <div className="header">
-        </div>
-        <div className="content">
-          <Switch>
-            <Route exact path="/" component={HomePage}></Route>
-            <Route path="/dashboard" component={DashboardPage}></Route>
-          </Switch>
-        </div>
+        <Switch>
+          <Route exact path="/" component={HomePage}></Route>
+          <Route path="/dashboard" component={DashboardPage}></Route>
+        </Switch>
       </div>
     )
   };

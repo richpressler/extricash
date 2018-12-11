@@ -4,8 +4,21 @@ export const meQuery = gql`
   {
     me {
       id
-      accounts {
+      monthlyIncome
+      bills {
         name
+        dayOfMonth
+        amount
+      }
+      accounts {
+        id
+        name
+        balance
+        transactions(orderBy: "-date", limit: 1) {
+          id
+          date
+          amount
+        }
       }
     }
   }

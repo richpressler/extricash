@@ -14,29 +14,24 @@ exports.up = function up (done) {
       const promises = [];
 
       accounts.forEach(account => {
-        account.get('transactions').forEach(transaction => {
-          delete transaction._id;
-          transaction.accountId = account._id;
-          const model = new TransactionModel(transaction);
-          const promise = new Promise((resolve, reject) => {
-            model.save(err => {
-              if (err) {
-                return reject();
-              }
-
-              resolve();
+        const promise = TransactionModel.find({accountId: account._id})
+          .exec()
+          .then(transactions => {
+            account.balance = transactions.reduce((balance, transaction) => {
+              return balance + transaction.amount;
+            }, 0);
+            return new Promise((resolve, reject) => {
+              account.save(err => {
+                if (err) {
+                  return reject();
+                }
+  
+                resolve();
+              });
             });
           });
 
-          promises.push(promise);
-        });
-
-        const deletePromise = AccountModel.findOneAndUpdate(
-          { _id: account._id },
-          { $unset: { transactions: "" } },
-          { strict: false }
-        ).exec();
-        promises.push(deletePromise);
+        promises.push(promise);
       });
 
       Promise.all(promises).then(() => done()).catch(err => {

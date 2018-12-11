@@ -4,6 +4,7 @@ import { Drawer, List, ListItem, ListItemIcon, ListItemText, withStyles } from '
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import AssessmentIcon from '@material-ui/icons/Assessment';
+import BackupIcon from '@material-ui/icons/Backup';
 import { DrawerProps } from '@material-ui/core/Drawer';
 
 const navLinks = [
@@ -21,6 +22,11 @@ const navLinks = [
     path: '/dashboard/analytics',
     label: 'Analytics',
     icon: <AssessmentIcon/>
+  },
+  {
+    path: '/dashboard/upload',
+    label: 'Upload',
+    icon: <BackupIcon/>
   }
 ];
 
@@ -49,7 +55,7 @@ export const ExtricashDrawer: React.SFC<Props> = props => {
             {navLinks.map((link, index) => {
               const linkProps = { to: link.path };
               return (
-                <ListItem button={true} key={link.path} component={Link} {...linkProps}>
+                <ListItem button={true} key={index} component={Link} {...linkProps}>
                   <ListItemIcon>{link.icon}</ListItemIcon>
                   <ListItemText primary={link.label} />
                 </ListItem>

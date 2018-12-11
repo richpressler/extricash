@@ -8,10 +8,14 @@ export const AccountResolvers = {
     }
   },
   Account: {
-    transactions: async (parent) => {
+    transactions: async (parent, { limit, orderBy }) => {
       return await TransactionDAL.find(
         {
           accountId: parent.id
+        },
+        {
+          limit,
+          orderBy
         }
       );
     }

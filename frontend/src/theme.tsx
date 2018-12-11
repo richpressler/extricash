@@ -10,7 +10,7 @@ export interface ExtricashThemeOptions extends ThemeOptions {
 export const extricashTheme = createMuiTheme({
   palette: {
     primary: {
-      main: '#3366cc'
+      main: '#5c85d6'
     },
     secondary: {
       main: '#78909C'

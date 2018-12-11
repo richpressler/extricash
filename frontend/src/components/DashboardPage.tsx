@@ -2,12 +2,12 @@ import * as React from 'react';
 import { Link, Redirect, Route, RouteProps, Switch } from 'react-router-dom';
 import { Button, Hidden, IconButton, Paper, Toolbar, Typography, withStyles } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import { Query } from 'react-apollo';
 
 import { AppBar } from './AppBar';
 import { ExtricashDrawer } from './ExtricashDrawer';
 import { OverviewPage } from './OverviewPage';
 import { BillsPage } from './BillsPage';
+import { UploadPage } from './UploadPage';
 
 const AppBarTitle = withStyles({
   root: {
@@ -65,6 +65,7 @@ export const DashboardPage: React.SFC<RouteProps> = ({ location }) => {
         <Switch>
           <Route path="/dashboard/overview" component={OverviewPage}></Route>
           <Route path="/dashboard/bills" component={BillsPage}></Route>
+          <Route path="/dashboard/upload" component={UploadPage}></Route>
         </Switch>
       </Content>
     </div>;
