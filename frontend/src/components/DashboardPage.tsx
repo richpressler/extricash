@@ -7,7 +7,7 @@ import { AppBar } from './AppBar';
 import { ExtricashDrawer } from './ExtricashDrawer';
 import { OverviewPage } from './OverviewPage';
 import { BillsPage } from './BillsPage';
-import { UploadPage } from './UploadPage';
+import { ImportPage } from './ImportPage';
 
 const AppBarTitle = withStyles({
   root: {
@@ -25,9 +25,10 @@ const AppBarMenuButton = withStyles({
 const Content = withStyles(theme => 
   ({
     root: {
-      background: "none",
-      boxShadow: "none",
-      padding: "15px",
+      background: 'none',
+      boxShadow: 'none',
+      padding: '15px',
+      height: 'calc(100% - 64px)',
       [theme.breakpoints.up('sm')]: {
         marginLeft: (theme as any).layout.drawerWidth
       }
@@ -44,7 +45,7 @@ export const DashboardPage: React.SFC<RouteProps> = ({ location }) => {
   }
   return location.pathname === '/dashboard' ?
     <Redirect to="/dashboard/overview" /> : 
-    <div>
+    <>
       <AppBar>
         <Toolbar>
           <AppBarMenuButton color="inherit" aria-label="Menu">
@@ -65,8 +66,8 @@ export const DashboardPage: React.SFC<RouteProps> = ({ location }) => {
         <Switch>
           <Route path="/dashboard/overview" component={OverviewPage}></Route>
           <Route path="/dashboard/bills" component={BillsPage}></Route>
-          <Route path="/dashboard/upload" component={UploadPage}></Route>
+          <Route path="/dashboard/import" component={ImportPage}></Route>
         </Switch>
       </Content>
-    </div>;
+    </>;
 }

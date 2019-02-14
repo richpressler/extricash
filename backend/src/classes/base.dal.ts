@@ -1,4 +1,4 @@
-import { Model, Document } from "mongoose";
+import { Model, Document } from 'mongoose';
 import '../database';
 
 export interface FindOptions {
@@ -27,7 +27,11 @@ export class DAL {
   }
 
   public static async findById(id: string) {
-    return await this.model.findById(id).lean().exec().then(result => this.mapId(result));
+    return await this.model
+      .findById(id)
+      .lean()
+      .exec()
+      .then(result => this.mapId(result));
   }
 
   public static async find(query: any, options: any = {}) {
@@ -35,13 +39,21 @@ export class DAL {
       sort: options.orderBy,
       limit: options.limit
     };
-    return await this.model.find(query, null, mongoOptions).lean().exec().then(result => this.mapId(result));
+    return await this.model
+      .find(query, null, mongoOptions)
+      .lean()
+      .exec()
+      .then(result => this.mapId(result));
   }
 
   public static async findOne(query: any) {
-    return await this.model.findOne(query).lean().exec().then(result => {
-      return this.mapId(result)
-    });
+    return await this.model
+      .findOne(query)
+      .lean()
+      .exec()
+      .then(result => {
+        return this.mapId(result);
+      });
   }
 
   public static async create(data) {

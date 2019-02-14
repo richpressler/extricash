@@ -5,6 +5,9 @@ export const AccountResolvers = {
   Query: {
     account: (parent, { id }, { me }) => {
       return AccountModel.findById(id);
+    },
+    accounts: (parent, args, { me }) => {
+      return AccountModel.find({ _id: { $in: me.accounts } });
     }
   },
   Account: {

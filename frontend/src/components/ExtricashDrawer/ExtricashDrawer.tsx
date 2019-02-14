@@ -11,22 +11,22 @@ const navLinks = [
   {
     path: '/dashboard/overview',
     label: 'Overview',
-    icon: <AccountBalanceIcon/>
+    icon: <AccountBalanceIcon />
   },
   {
     path: '/dashboard/bills',
     label: 'Bills',
-    icon: <AssignmentIcon/>
+    icon: <AssignmentIcon />
   },
   {
     path: '/dashboard/analytics',
     label: 'Analytics',
-    icon: <AssessmentIcon/>
+    icon: <AssessmentIcon />
   },
   {
-    path: '/dashboard/upload',
-    label: 'Upload',
-    icon: <BackupIcon/>
+    path: '/dashboard/import',
+    label: 'Import',
+    icon: <BackupIcon />
   }
 ];
 
@@ -36,33 +36,40 @@ interface Props extends DrawerProps {
   toggle?: (state: boolean) => void;
 }
 
-const StyledDrawer = withStyles(theme => ({
-  paper: {
-    width: (theme as any).layout.drawerWidth
-  }
-}), { withTheme: true })(Drawer);
+const StyledDrawer = withStyles(
+  theme => ({
+    paper: {
+      width: (theme as any).layout.drawerWidth
+    }
+  }),
+  { withTheme: true }
+)(Drawer);
 
 export const ExtricashDrawer: React.SFC<Props> = props => {
   return (
-    <StyledDrawer open={props.isOpen} onClose={() => props.permanent ? null : props.toggle(false)} variant={props.permanent ? "permanent" : "temporary"}>
-        <div
-          tabIndex={0}
-          role="button"
-          onClick={() => props.permanent ? null : props.toggle(false)}
-          onKeyDown={() => props.permanent ? null : props.toggle(false)}
-        >
-          <List>
-            {navLinks.map((link, index) => {
-              const linkProps = { to: link.path };
-              return (
-                <ListItem button={true} key={index} component={Link} {...linkProps}>
-                  <ListItemIcon>{link.icon}</ListItemIcon>
-                  <ListItemText primary={link.label} />
-                </ListItem>
-              )
-            })}
-          </List>
-        </div>
-      </StyledDrawer>
+    <StyledDrawer
+      open={props.isOpen}
+      onClose={() => (props.permanent ? null : props.toggle(false))}
+      variant={props.permanent ? 'permanent' : 'temporary'}
+    >
+      <div
+        tabIndex={0}
+        role="button"
+        onClick={() => (props.permanent ? null : props.toggle(false))}
+        onKeyDown={() => (props.permanent ? null : props.toggle(false))}
+      >
+        <List>
+          {navLinks.map((link, index) => {
+            const linkProps = { to: link.path };
+            return (
+              <ListItem button={true} key={index} component={Link} {...linkProps}>
+                <ListItemIcon>{link.icon}</ListItemIcon>
+                <ListItemText primary={link.label} />
+              </ListItem>
+            );
+          })}
+        </List>
+      </div>
+    </StyledDrawer>
   );
-}
+};

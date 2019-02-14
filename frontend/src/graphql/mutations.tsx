@@ -15,3 +15,11 @@ export const RegisterMutation = gql`
     }
   }
 `;
+
+export const CreateTransactionsMutation = gql`
+  mutation createTransactions($input: [CreateTransactionInput!]!) {
+    createTransactions(input: $input) {
+      id
+    }
+  }
+`;

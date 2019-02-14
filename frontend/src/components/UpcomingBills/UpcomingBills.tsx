@@ -2,17 +2,15 @@ import * as React from 'react';
 import { Card, CardContent, Typography, withStyles } from '@material-ui/core';
 import { Bill } from '../../../../backend/src/modules/user';
 
-const StyledCard = withStyles(theme => (
-  {
-    root: {
-      width: '350px',
-      marginBottom: '15px',
-      [theme.breakpoints.down('xs')]: {
-        width: '100%'
-      }
+const StyledCard = withStyles(theme => ({
+  root: {
+    width: '350px',
+    marginBottom: '15px',
+    [theme.breakpoints.down('xs')]: {
+      width: '100%'
     }
   }
-))(Card);
+}))(Card);
 
 const SectionHeader = withStyles({
   root: {
@@ -22,16 +20,18 @@ const SectionHeader = withStyles({
 })(Typography);
 
 interface UpcomingBillsProps {
-  bills: Bill[]
+  bills: Bill[];
 }
 
 export const UpcomingBills: React.SFC<UpcomingBillsProps> = props => {
-  const getUpcomingBills = bills => bills.filter(bill => bill.dayOfMonth >= (new Date()).getDate()).sort((bill1, bill2) => bill1.dayOfMonth - bill2.dayOfMonth).slice(0, 5);
+  const getUpcomingBills = bills =>
+    bills
+      .filter(bill => bill.dayOfMonth >= new Date().getDate())
+      .sort((bill1, bill2) => bill1.dayOfMonth - bill2.dayOfMonth)
+      .slice(0, 5);
   return props.bills ? (
-    <div>
-      <SectionHeader variant="h4">
-        Upcoming Bills
-      </SectionHeader>
+    <>
+      <SectionHeader variant="h4">Upcoming Bills</SectionHeader>
       {getUpcomingBills(props.bills).map(bill => (
         <StyledCard key={bill.name}>
           <CardContent>
@@ -44,6 +44,8 @@ export const UpcomingBills: React.SFC<UpcomingBillsProps> = props => {
           </CardContent>
         </StyledCard>
       ))}
-    </div>
-  ) : <div>Loading...</div>;
+    </>
+  ) : (
+    <>Loading...</>
+  );
 };

@@ -5,6 +5,7 @@ import { Transaction } from '../transaction';
 export const AccountSchema = gql`
   extend type Query {
     account(id: ID!): Account!
+    accounts: [Account]!
   }
 
   type Account {
@@ -21,5 +22,5 @@ export interface Account extends Document {
   name: string;
   balance: number;
 
-  transactions: Transaction[]
+  transactions: Transaction[];
 }

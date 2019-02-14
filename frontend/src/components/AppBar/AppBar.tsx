@@ -43,7 +43,7 @@ export class AppBar extends React.Component {
   
   render() {
     return (
-      <div>
+      <>
         <StyledAppBar position="static" color="secondary">
           <Toolbar>
             <Hidden smUp>
@@ -60,7 +60,7 @@ export class AppBar extends React.Component {
         <Hidden smUp>
           <ExtricashDrawer isOpen={this.state.menuOpen} toggle={(state) => this.toggleDrawer(state)}/>
         </Hidden>
-      </div>
+      </>
     );
   }
 }
