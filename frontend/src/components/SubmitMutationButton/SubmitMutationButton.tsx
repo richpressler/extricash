@@ -6,6 +6,7 @@ import { FetchResult } from 'apollo-link';
 export interface SubmitMutationButtonProps {
   preSubmit: () => object;
   mutation: MutationFn;
+  refreshQueries?: string[];
   postSubmit?: (result: object) => void;
 }
 

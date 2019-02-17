@@ -214,6 +214,7 @@ class BaseImportPage extends React.Component<RouteComponentProps, ImportPageStat
                         <SubmitMutationButton
                           preSubmit={this.handleUploadClicked}
                           mutation={mutationFunc}
+                          refreshQueries={['me']}
                           postSubmit={this.handleSubmitSuccess}
                         >
                           Upload

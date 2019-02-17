@@ -5,7 +5,7 @@ import { User } from '../../../../backend/src/modules/user';
 import { reduce } from 'async';
 
 export interface ProfileSummaryProps {
-  user: User
+  user: User;
 }
 
 const StyledCard = withStyles({
@@ -32,48 +32,41 @@ export const ProfileSummary: React.SFC<ProfileSummaryProps> = props => {
         </Typography>
         <MaxWidthGrid container>
           <Grid item sm>
-            <Typography>
-              <Grid container>
-                <Grid item sm>
-                  Cash Balance:
-                </Grid>
-                <Grid item sm>
-                  ${getCashBalance(props.user.accounts)}
-                </Grid>
+            <Grid container>
+              <Grid item sm>
+                <Typography>Cash Balance:</Typography>
               </Grid>
-            </Typography>
+              <Grid item sm>
+                <Typography>${getCashBalance(props.user.accounts)}</Typography>
+              </Grid>
+            </Grid>
           </Grid>
           <Grid item sm>
-            <Typography>
-              <Grid container>
-                <Grid item sm>
-                  Monthly Income:
-                </Grid>
-                <Grid item sm>
-                  ${props.user.monthlyIncome.toFixed(2)}
-                </Grid>
+            <Grid container>
+              <Grid item sm>
+                <Typography>Monthly Income:</Typography>
               </Grid>
-            </Typography>
-            <Typography>
-              <Grid container>
-                <Grid item sm>
-                  Monthly Bill Outlay:
-                </Grid>
-                <Grid item sm>
-                  ${getBillTotal(props.user.bills).toFixed(2)}
-                </Grid>
+              <Grid item sm>
+                <Typography>${props.user.monthlyIncome.toFixed(2)}</Typography>
               </Grid>
-            </Typography>
-            <Typography>
-              <Grid container>
-                <Grid item sm>
-                  Disposable Income:
-                </Grid>
-                <Grid item sm>
-                  ${getDisposableIncome(props.user)}
-                </Grid>
+            </Grid>
+            <Grid container>
+              <Grid item sm>
+                <Typography>Monthly Bill Outlay:</Typography>
               </Grid>
-            </Typography>
+              <Grid item sm>
+                <Typography>${getBillTotal(props.user.bills).toFixed(2)}</Typography>
+              </Grid>
+            </Grid>
+
+            <Grid container>
+              <Grid item sm>
+                <Typography>Disposable Income:</Typography>
+              </Grid>
+              <Grid item sm>
+                <Typography>${getDisposableIncome(props.user)}</Typography>
+              </Grid>
+            </Grid>
           </Grid>
         </MaxWidthGrid>
       </CardContent>
