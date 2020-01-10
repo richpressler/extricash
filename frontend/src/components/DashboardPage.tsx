@@ -8,6 +8,7 @@ import { ExtricashDrawer } from './ExtricashDrawer';
 import { OverviewPage } from './OverviewPage';
 import { BillsPage } from './BillsPage';
 import { ImportPage } from './ImportPage';
+import { PaycheckPage } from './PaycheckPage';
 
 const AppBarTitle = withStyles({
   root: {
@@ -22,29 +23,28 @@ const AppBarMenuButton = withStyles({
   }
 })(IconButton);
 
-const Content = withStyles(theme => 
-  ({
-    root: {
-      background: 'none',
-      boxShadow: 'none',
-      padding: '15px',
-      height: 'calc(100% - 64px)',
-      [theme.breakpoints.up('sm')]: {
-        marginLeft: (theme as any).layout.drawerWidth
-      }
+const Content = withStyles(theme => ({
+  root: {
+    background: 'none',
+    boxShadow: 'none',
+    padding: '15px',
+    height: 'calc(100% - 64px)',
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: (theme as any).layout.drawerWidth
     }
-  })
-)(Paper);
+  }
+}))(Paper);
 
-const HomeLink = props => <Link to="/dashboard" {...props} />
+const HomeLink = props => <Link to="/dashboard" {...props} />;
 
 export const DashboardPage: React.SFC<RouteProps> = ({ location }) => {
   const homeLinkProps = { to: '/dashboard' };
   if (!window.localStorage.getItem('token')) {
     return <Redirect to="/" />;
   }
-  return location.pathname === '/dashboard' ?
-    <Redirect to="/dashboard/overview" /> : 
+  return location.pathname === '/dashboard' ? (
+    <Redirect to="/dashboard/overview" />
+  ) : (
     <>
       <AppBar>
         <Toolbar>
@@ -64,10 +64,12 @@ export const DashboardPage: React.SFC<RouteProps> = ({ location }) => {
       </Hidden>
       <Content>
         <Switch>
-          <Route path="/dashboard/overview" component={OverviewPage}></Route>
-          <Route path="/dashboard/bills" component={BillsPage}></Route>
-          <Route path="/dashboard/import" component={ImportPage}></Route>
+          <Route path="/dashboard/overview" component={OverviewPage} />
+          <Route path="/dashboard/bills" component={BillsPage} />
+          <Route path="/dashboard/import" component={ImportPage} />
+          <Route path="/dashboard/paycheck" component={PaycheckPage} />
         </Switch>
       </Content>
-    </>;
-}
+    </>
+  );
+};

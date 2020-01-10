@@ -4,6 +4,7 @@ import { Drawer, List, ListItem, ListItemIcon, ListItemText, withStyles } from '
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import AssessmentIcon from '@material-ui/icons/Assessment';
+import AttachMoney from '@material-ui/icons/AttachMoney';
 import BackupIcon from '@material-ui/icons/Backup';
 import { DrawerProps } from '@material-ui/core/Drawer';
 
@@ -27,6 +28,12 @@ const navLinks = [
     path: '/dashboard/import',
     label: 'Import',
     icon: <BackupIcon />
+  }
+  ,
+  {
+    path: '/dashboard/paycheck',
+    label: 'Get Paid',
+    icon: <AttachMoney />
   }
 ];
 
