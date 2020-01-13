@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { Button, Card, CardActions, CardContent, Typography, withStyles } from '@material-ui/core';
-import * as moment from 'moment';
+import moment from 'moment';
 import { Account } from '../../../../backend/src/modules/account';
 
 const StyledCard = withStyles(theme => ({

@@ -4,6 +4,7 @@
     "lib": [
       "esnext"
      ],
+     "esModuleInterop": true,
      "sourceMap": true
   },
   "include": [

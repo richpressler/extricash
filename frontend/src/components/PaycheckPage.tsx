@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 import { Query } from 'react-apollo';
 import { EnterDetails } from './Paycheck';
-import * as moment from 'moment';
+import moment from 'moment';
 import { Moment } from 'moment';
 import { Typography } from '@material-ui/core';
 import { meQuery } from '../graphql/queries';

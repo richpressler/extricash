@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 import { Drawer, List, ListItem, ListItemIcon, ListItemText, withStyles } from '@material-ui/core';
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 import AssignmentIcon from '@material-ui/icons/Assignment';
@@ -67,9 +66,8 @@ export const ExtricashDrawer: React.SFC<Props> = props => {
       >
         <List>
           {navLinks.map((link, index) => {
-            const linkProps = { to: link.path };
             return (
-              <ListItem button={true} key={index} component={Link} {...linkProps}>
+              <ListItem button={true} key={index} component={'a'} href={link.path}>
                 <ListItemIcon>{link.icon}</ListItemIcon>
                 <ListItemText primary={link.label} />
               </ListItem>

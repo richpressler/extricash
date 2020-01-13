@@ -3,9 +3,9 @@ config();
 
 import { json } from 'body-parser';
 import { renderFile } from 'ejs';
-import * as express from 'express';
+import express from 'express';
 import { verify } from 'jsonwebtoken';
-import * as logger from 'morgan';
+import logger from 'morgan';
 import { resolve } from 'path';
 import { AuthenticationError } from 'apollo-server';
 import { ApolloServer } from 'apollo-server-express';

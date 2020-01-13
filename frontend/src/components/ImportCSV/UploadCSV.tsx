@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 
 import { Grid, Paper, Typography, withStyles } from '@material-ui/core';
-import * as parse from 'csv-parse';
+import parse from 'csv-parse';
 import Dropzone from 'react-dropzone';
 
 const UploadArea = withStyles({

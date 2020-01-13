@@ -2,7 +2,6 @@ import { Card, CardContent, Grid, Typography, withStyles } from '@material-ui/co
 import * as React from 'react';
 
 import { User } from '../../../../backend/src/modules/user';
-import { reduce } from 'async';
 
 export interface ProfileSummaryProps {
   user: User;
