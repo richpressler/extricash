@@ -31,6 +31,7 @@ export class DAL {
       .findById(id)
       .lean()
       .exec()
+      // @ts-ignore
       .then(result => this.mapId(result));
   }
 
@@ -43,6 +44,7 @@ export class DAL {
       .find(query, null, mongoOptions)
       .lean()
       .exec()
+      // @ts-ignore
       .then(result => this.mapId(result));
   }
 
@@ -52,6 +54,7 @@ export class DAL {
       .lean()
       .exec()
       .then(result => {
+        // @ts-ignore
         return this.mapId(result);
       });
   }

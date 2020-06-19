@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {
   TextField,
   Grid,
@@ -24,6 +24,7 @@ interface EnterDetailsProps {
   dateString: string;
   onChangeAmount: (amount: number) => void;
   onChangeDate: (date: string) => void;
+  onStartAllocating: (bills: Bill[], billAccountId: string) => void;
 }
 
 const StyledGrid = withStyles({
@@ -45,7 +46,10 @@ export class EnterDetails extends React.Component<EnterDetailsProps, EnterDetail
 
   handleChangeAmount = evt => this.props.onChangeAmount(Number(evt.target.value));
 
-  handleStartAllocating = () => this.setState({ isAllocating: true });
+  handleStartAllocating = () => {
+    this.props.onStartAllocating(this.props.bills, this.props.accounts.find(account => account.name === 'Bill Expense').id);
+    this.setState({ isAllocating: true });
+  };
 
   render() {
     return (
@@ -84,19 +88,21 @@ export class EnterDetails extends React.Component<EnterDetailsProps, EnterDetail
               </TableRow>
             </TableHead>
             <TableBody>
-              <TableRow>
-                <TableCell>
-                  <Select>
-                    {this.props.accounts.map((account, index) => (
-                      <MenuItem value={account.id} key={index}>
-                        {account.name}
-                      </MenuItem>
-                    ))}
-                  </Select>
-                </TableCell>
-                <TableCell>Test2</TableCell>
-                <TableCell>Test3</TableCell>
-              </TableRow>
+              {this.props.allocations.map((allocation, index) => (
+                <TableRow key={index}>
+                  <TableCell>
+                    <Select value={allocation.accountId} onChange={() => {}}>
+                      {this.props.accounts.map((account, index) => (
+                        <MenuItem value={account.id} key={index}>
+                          {account.name}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </TableCell>
+                  <TableCell>{allocation.description}</TableCell>
+                  <TableCell>{allocation.amount}</TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
         )}
